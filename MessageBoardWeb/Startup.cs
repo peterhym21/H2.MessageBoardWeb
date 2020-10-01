@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MessageBoardRepository.Interfaces;
+using MessageBoardRepository.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,8 +27,8 @@ namespace MessageBoardWeb
         {
             string conString = Configuration.GetConnectionString("DefaultConnection");
 
-            //services.AddSingleton<ICategoryRepository>(new CategoryRepository(conString));
-            //services.AddSingleton<IProductRepository>(new ProductRepository(conString));
+            services.AddSingleton<ICategoryRepository>(new CategoryRepository(conString));
+            services.AddSingleton<IMessagesRepository>(new MessagesRepository(conString));
 
             services.AddRazorPages();
         }

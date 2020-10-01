@@ -1,7 +1,7 @@
-﻿--Use Master
---GO
---Create Database MessageBoardDB
---GO
+﻿Use Master
+GO
+Create Database MessageBoardDB
+GO
 
 Use MessageBoardDB
 GO
@@ -170,6 +170,16 @@ Create Procedure DeleteMessage
 As
 Delete [Messages] WHERE MessageId = @MessageId
 Go
+
+
+--Read Messages in category
+Create Procedure GetCategoryMessage
+@CategoryId Int
+As
+Select *
+From [Messages]
+Where CategoryId = @CategoryId
+GO
 
 ------------------------------------------------------------------------------------------------------------
 

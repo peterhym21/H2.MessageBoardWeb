@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MessageBoardRepository.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,10 @@ namespace MessageBoardRepository.Interfaces
 {
     public interface IMessagesRepository
     {
-        
+        List<Messages> ReadMessages();
+        List<Messages> ReadMessagesByCategory(int CategoryId);
+        int CreateMessages();
+        int UpdateMessage();
+        int DeleteMessage();
     }
 }

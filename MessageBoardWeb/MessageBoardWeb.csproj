@@ -10,4 +10,8 @@
     <Folder Include="Pages\Delete\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MessageBoardRepository\MessageBoardRepository.csproj" />
+  </ItemGroup>
+
 </Project>
