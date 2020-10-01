@@ -29,6 +29,7 @@ namespace MessageBoardWeb
 
             services.AddSingleton<ICategoryRepository>(new CategoryRepository(conString));
             services.AddSingleton<IMessagesRepository>(new MessagesRepository(conString));
+            services.AddSingleton<IUsersRepository>(new UserRepository(conString));
 
             services.AddRazorPages();
         }
