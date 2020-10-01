@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EB3F9C17-21F1-4E67-9BDC-5328F8FD829D}"
 	ProjectSection(SolutionItems) = preProject
 		MessageBoardSetupScript.sql = MessageBoardSetupScript.sql
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global
