@@ -10,6 +10,7 @@ namespace MessageBoardRepository.Interfaces
     public interface IMessagesRepository
     {
         List<Messages> ReadMessages();
+        List<Messages> GetTopTen();
         List<Messages> ReadMessagesByCategory(int CategoryId);
         int CreateMessages();
         int UpdateMessage();

@@ -32,7 +32,26 @@ namespace MessageBoardRepository.Repository
             SqlDataReader myReader = cmd.ExecuteReader();
             while (myReader.Read())
             {
-                messagesList.Add(new Messages { MessageId = (int)myReader["MessageId"], Title = (string)myReader["Title"] });
+                messagesList.Add(new Messages { MessageId = (int)myReader["MessageId"], Title = (string)myReader["Title"], Content = (string)myReader["Content"], CategoryId = (int)myReader["CategoryId"], Dato = (DateTime)myReader["Dato"], UserId = (int)myReader["UserId"] });
+            }
+
+            con.Close();
+            return messagesList;
+        }
+
+
+        public List<Messages> GetTopTen()
+        {
+            messagesList = new List<Messages>();
+            SqlConnection con = new SqlConnection(_conString);
+            SqlCommand cmd = new SqlCommand("GetTopTenMessages", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            con.Open();
+            SqlDataReader myReader = cmd.ExecuteReader();
+            while (myReader.Read())
+            {
+                messagesList.Add(new Messages { MessageId = (int)myReader["MessageId"], Title = (string)myReader["Title"], Content = (string)myReader["Content"], CategoryId = (int)myReader["CategoryId"], Dato = (DateTime)myReader["Dato"], UserId = (int)myReader["UserId"] });
             }
 
             con.Close();
@@ -53,7 +72,7 @@ namespace MessageBoardRepository.Repository
             SqlDataReader myReader = cmd.ExecuteReader();
             while (myReader.Read())
             {
-                messagesList.Add(new Messages { MessageId = (int)myReader["MessageId"], Title = (string)myReader["Title"], Content = (string)myReader["Content"] });
+                messagesList.Add(new Messages { MessageId = (int)myReader["MessageId"], Title = (string)myReader["Title"], Content = (string)myReader["Content"], CategoryId = (int)myReader["CategoryId"], Dato = (DateTime)myReader["Dato"], UserId = (int)myReader["UserId"] });
             }
 
             con.Close();
@@ -76,7 +95,5 @@ namespace MessageBoardRepository.Repository
         {
             throw new NotImplementedException();
         }
-
-        
     }
 }

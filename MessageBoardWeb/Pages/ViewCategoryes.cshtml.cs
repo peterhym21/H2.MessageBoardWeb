@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,30 +11,29 @@ using Microsoft.Extensions.Logging;
 
 namespace MessageBoardWeb.Pages
 {
-    public class IndexModel : PageModel
+    public class ViewCategoryesModel : PageModel
     {
         private readonly ICategoryRepository _categoryRepos;
         private readonly IMessagesRepository _messagesRepository;
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ILogger<ViewCategoryesModel> _logger;
 
         public SelectList Categories { get; set; }
+
+        [BindProperty(SupportsGet = true)]
         public int SelectedCategoryId { get; set; }
         public List<Messages> MessagesList { get; set; }
         public List<Category> Categorys { get; set; }
 
 
-        public IndexModel(ICategoryRepository categoryRepos, IMessagesRepository messagesRepository, ILogger<IndexModel> logger)
+        public ViewCategoryesModel(ICategoryRepository categoryRepos, IMessagesRepository messagesRepository, ILogger<ViewCategoryesModel> logger)
         {
             _messagesRepository = messagesRepository;
             _categoryRepos = categoryRepos;
             _logger = logger;
         }
-
         public void OnGet()
         {
-            Categories = new SelectList(_categoryRepos.ReadCategories(), "CateogryId", "CategoryName");
-            MessagesList = _messagesRepository.GetTopTen();
-            Categorys = _categoryRepos.ReadCategories();
+            MessagesList = _messagesRepository.ReadMessagesByCategory(SelectedCategoryId);
         }
     }
 }

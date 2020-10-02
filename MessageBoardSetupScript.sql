@@ -171,7 +171,6 @@ As
 Delete [Messages] WHERE MessageId = @MessageId
 Go
 
-
 --Read Messages in category
 Create Procedure GetCategoryMessage
 @CategoryId Int
@@ -180,6 +179,14 @@ Select *
 From [Messages]
 Where CategoryId = @CategoryId
 GO
+
+--Read top 10
+Create Procedure GetTopTenMessages
+As
+Select Top 10 *
+From [Messages]
+go
+
 
 ------------------------------------------------------------------------------------------------------------
 

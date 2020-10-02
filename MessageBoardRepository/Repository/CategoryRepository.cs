@@ -13,7 +13,7 @@ namespace MessageBoardRepository.Repository
     public class CategoryRepository : ICategoryRepository
     {
         private readonly string _conString;
-        public List<Category> categories;
+        private List<Category> categories;
 
         public CategoryRepository(string conString)
         {

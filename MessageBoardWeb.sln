@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageBoardWeb", "MessageBoardWeb\MessageBoardWeb.csproj", "{BD075952-A76A-4987-B03E-C30FEA979EE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageBoardWeb", "MessageBoardWeb\MessageBoardWeb.csproj", "{BD075952-A76A-4987-B03E-C30FEA979EE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageBoardRepository", "MessageBoardRepository\MessageBoardRepository.csproj", "{F78BB827-77F7-4C96-A2BA-CEF1B2AFB7DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageBoardRepository", "MessageBoardRepository\MessageBoardRepository.csproj", "{F78BB827-77F7-4C96-A2BA-CEF1B2AFB7DB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EB3F9C17-21F1-4E67-9BDC-5328F8FD829D}"
 	ProjectSection(SolutionItems) = preProject
