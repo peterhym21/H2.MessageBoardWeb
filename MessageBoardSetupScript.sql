@@ -76,6 +76,15 @@ Select *
 From Category
 GO
 
+--GetoneCategory
+Create Procedure ReadCategorys
+@CategoryId int
+As
+Select *
+From Category
+Where CategoryId = @CategoryId
+GO
+
 --Update
 Create Procedure UpdateCategorys
 @CategoryRename VarChar(100),

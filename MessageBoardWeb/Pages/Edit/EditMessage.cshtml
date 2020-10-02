@@ -1,4 +1,57 @@
-﻿@page
+﻿@page "{id:int}"
 @model MessageBoardWeb.Pages.Edit.EditMessageModel
-@{
-}
+<div class="container">
+    <div class="col-lg-12">
+        <h1>Message Editing</h1>
+    </div>
+    <br />
+    <div class="col-lg-12">
+        <form method="post" asp-route="@Model.GetMessages.MessageId">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <p>Indtast hvad du vil tilføje til din ToDo: </p>
+                            <div class="input-group">
+                                <input type="text" class="form-control"
+                                       placeholder="@Model.GetMessages.Title" asp-for="Title" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <p>Tilføj en description på din ToDo: </p>
+                            <div class="input-group">
+                                <input type="text" class="form-control"
+                                       placeholder="@Model.GetMessages.Content" asp-for="Content" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <p>Færdig gjørt din ToDo?: </p>
+                            <p>if checked = done: </p>
+                            <div class="input-group">
+                                <input type="text" class="form-control"
+                                       placeholder="@Model" asp-for="Category" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div>
+                        <button type="submit" class="btn btn-info">Save ToDo</button>
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <br />
+        <a asp-page="./Index" class="btn btn-danger"><i class="btn text-white">Back To Ho</i></a>
+    </div>
+</div>
