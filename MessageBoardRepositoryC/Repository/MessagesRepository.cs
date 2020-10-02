@@ -93,7 +93,7 @@ namespace MessageBoardRepository.Repository
             SqlDataReader myReader = cmd.ExecuteReader();
             while (myReader.Read())
             {
-                if ((int)myReader["UserId"] == messageId)
+                if ((int)myReader["MessageId"] == messageId)
                 {
                     getmessage.Title = (string)myReader["Title"];
                     getmessage.MessageId = (int)myReader["MessageId"];
@@ -120,11 +120,15 @@ namespace MessageBoardRepository.Repository
             cmd.Parameters.AddWithValue("@UserId", UserId);
             cmd.Parameters.AddWithValue("@CategoryId", CategoryId);
 
+            SqlParameter param = new SqlParameter("@MessageId", SqlDbType.Int);
+            param.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(param);
+
             con.Open();
-            SqlDataReader Reader = cmd.ExecuteReader();
-            Reader.Read();
-            messageId = Reader["MessageId"]
+            cmd.ExecuteNonQuery();
             con.Close();
+
+            messageId = Convert.ToInt32(cmd.Parameters["@MessageId"].Value);
             messagesList = ReadMessages();
             return messageId;
         }

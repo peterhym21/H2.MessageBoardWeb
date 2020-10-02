@@ -38,17 +38,18 @@ Values('meh'),
 GO
 
 Insert Into Users(Username, Password)
-Values('Peter','meh'),
+Values('DefultUser','meh'),
+('Peter','meh'),
 ('Nicolai','meh'),
-('Casper','meh'),
-('Tobias','meh');
+('Casper','meh');
+
 GO
 
 Insert Into [Messages](Title, Content, UserId, CategoryId)
-Values('meh', 'meh', 1, 1),
+Values('meh', 'meh', 2, 1),
 ('Hacking', 'Ha Yeah like im gonna show you!', 2, 2),
-('Toxisety', 'Fuck off you little Stupide N*****', 3, 1),
-('Yeet', 'yeet', 4, 2);
+('Toxisety', 'Fuck off you little Stupide N*****', 4, 1),
+('Yeet', 'yeet', 1, 2);
 GO
 
 
@@ -62,7 +63,7 @@ AS
 IF NOT EXISTS (SELECT CategoryName FROM Category WHERE CategoryName = @NewCategoryName)
 BEGIN
 
-    INSERT INTO HashTags (CategoryName)
+    INSERT INTO Category (CategoryName)
     VALUES (@NewCategoryName);
 
 END;
@@ -140,10 +141,13 @@ CREATE Procedure CreateMessage
 @Title VarChar(30),
 @Content VarChar(500),
 @UserId Int,
-@CategoryId Int
+@CategoryId Int,
+@MessageId int out
 AS
 Insert Into [Messages] (Title, Content, UserId, CategoryId)
 Values(@Title, @Content, @UserId, @CategoryId);
+
+set @MessageId = SCOPE_IDENTITY()
 GO
 
 --ReadAll
@@ -159,7 +163,7 @@ Create Procedure UpdateMessage
 @Content VarChar(500),
 @MessageId Int
 As
-UPDATE Users 
+UPDATE [Messages] 
 SET Title = @Title, Content = @Content
 WHERE MessageId = @MessageId
 GO
@@ -187,6 +191,14 @@ Select Top 10 *
 From [Messages]
 go
 
+
+Create Procedure GetMessage
+@GetMessageId int
+As
+Select *
+From [Messages]
+Where [MessageId] = @GetMessageId
+GO
 
 ------------------------------------------------------------------------------------------------------------
 

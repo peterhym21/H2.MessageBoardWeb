@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MessageBoardRepository\MessageBoardRepository.csproj" />
+    <Folder Include="wwwroot\Img\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MessageBoardRepositoryC\MessageBoardRepository.csproj" />
   </ItemGroup>
 
 </Project>
