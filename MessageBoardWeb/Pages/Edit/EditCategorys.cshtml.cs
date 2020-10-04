@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MessageBoardRepository.Entities;
 using MessageBoardRepository.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -21,8 +22,31 @@ namespace MessageBoardWeb.Pages.Edit
             _logger = logger;
         }
 
-        public void OnGet()
+
+        [BindProperty]
+        public string Category { get; set; }
+
+
+        public Category GetCategory { get; set; }
+
+        public void OnGet(int id)
         {
+            GetCategory = _categoryRepos.ReadOneCategories(id);
+        }
+        public IActionResult OnPost(int id)
+        {
+            GetCategory = _categoryRepos.ReadOneCategories(id);
+
+            if (Category == null)
+            {
+                _categoryRepos.UpdateCategory(GetCategory.CategoryName, id);
+                return RedirectToPage("../Categorys");
+            }
+            else
+                _categoryRepos.UpdateCategory(Category, id);
+
+            return RedirectToPage("../Categorys");
+
         }
     }
 }

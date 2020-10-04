@@ -43,8 +43,10 @@ namespace MessageBoardRepository.Repository
         {
             getCategory = new Category();
             SqlConnection con = new SqlConnection(_conString);
-            SqlCommand cmd = new SqlCommand("ReadCategorys", con);
+            SqlCommand cmd = new SqlCommand("ReadOneCategory", con);
             cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@CategoryId", Id);
 
             con.Open();
             SqlDataReader myReader = cmd.ExecuteReader();
@@ -104,7 +106,7 @@ namespace MessageBoardRepository.Repository
         public int DeleteCategory(int CategoryId)
         {
             SqlConnection con = new SqlConnection(_conString);
-            SqlCommand cmd = new SqlCommand("UpdateCategorys", con);
+            SqlCommand cmd = new SqlCommand("DeleteCategorys", con);
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@CategoryId", CategoryId);
