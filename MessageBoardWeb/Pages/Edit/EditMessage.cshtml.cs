@@ -37,7 +37,32 @@ namespace MessageBoardWeb.Pages.Edit
         public void OnGet(int id)
         {
             GetMessages = _messagesRepository.GetMessage(id);
-            
+            GetCategory = _categoryRepos.ReadOneCategories(GetMessages.CategoryId);
+        }
+        public IActionResult OnPost(int id)
+        {
+
+            GetMessages = _messagesRepository.GetMessage(id);
+            if (Title == null && Content == null)
+            {
+                _messagesRepository.UpdateMessage(GetMessages.MessageId, GetMessages.Title, GetMessages.Content, GetMessages.CategoryId);
+                return RedirectToPage("../Details/DetaileMessages", new { id = GetMessages.MessageId });
+            }
+                
+            if (Title == null)
+            {
+                _messagesRepository.UpdateMessage(GetMessages.MessageId, GetMessages.Title, Content, GetMessages.CategoryId);
+                return RedirectToPage("../Details/DetaileMessages", new { id = GetMessages.MessageId });
+            }
+            if (Content == null)
+            {
+                _messagesRepository.UpdateMessage(GetMessages.MessageId, Title, GetMessages.Content, GetMessages.CategoryId);
+                return RedirectToPage("../Details/DetaileMessages", new { id = GetMessages.MessageId });
+            }
+            else
+                _messagesRepository.UpdateMessage(GetMessages.MessageId, Title, Content, GetMessages.CategoryId);
+
+            return RedirectToPage("../Details/DetaileMessages", new { id = GetMessages.MessageId });
 
         }
 

@@ -14,6 +14,7 @@ namespace MessageBoardRepository.Repository
     {
         private readonly string _conString;
         private List<Category> categories;
+        private Category getCategory;
 
         public CategoryRepository(string conString)
         {
@@ -38,6 +39,24 @@ namespace MessageBoardRepository.Repository
             return categories;
         }
 
+        public Category ReadOneCategories(int Id)
+        {
+            getCategory = new Category();
+            SqlConnection con = new SqlConnection(_conString);
+            SqlCommand cmd = new SqlCommand("ReadCategorys", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            con.Open();
+            SqlDataReader myReader = cmd.ExecuteReader();
+            while (myReader.Read())
+            {
+                getCategory.CateogryId = (int)myReader["CategoryId"];
+                getCategory.CategoryName = (string)myReader["CategoryName"];
+            }
+
+            con.Close();
+            return getCategory;
+        }
 
         public int CreateCategory(string NewCategoryName)
         {
@@ -95,5 +114,7 @@ namespace MessageBoardRepository.Repository
             con.Close();
             return affectedRows;
         }
+
+
     }
 }

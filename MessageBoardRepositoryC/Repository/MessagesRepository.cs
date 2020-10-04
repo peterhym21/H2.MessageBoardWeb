@@ -133,17 +133,36 @@ namespace MessageBoardRepository.Repository
             return messageId;
         }
 
-
-        public int UpdateMessage()
+        public void DeleteMessage(int messageId)
         {
-            throw new NotImplementedException();
+            SqlConnection con = new SqlConnection(_conString);
+            SqlCommand cmd = new SqlCommand("DeleteMessage", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@MessageId", messageId);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
         }
 
-        public int DeleteMessage()
+        public int UpdateMessage(int messageId, string title, string content, int categoryId)
         {
-            throw new NotImplementedException();
+
+            SqlConnection con = new SqlConnection(_conString);
+            SqlCommand cmd = new SqlCommand("UpdateMessage", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@MessageId", messageId);
+            cmd.Parameters.AddWithValue("@Title", title);
+            cmd.Parameters.AddWithValue("@Content", content);
+            cmd.Parameters.AddWithValue("@CategoryId", categoryId);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            return messageId;
         }
-
-
     }
 }

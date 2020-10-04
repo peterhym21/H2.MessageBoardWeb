@@ -11,7 +11,7 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         <div class="form-group">
-                            <p>Indtast hvad du vil tilføje til din ToDo: </p>
+                            <p>Insert New Title: </p>
                             <div class="input-group">
                                 <input type="text" class="form-control"
                                        placeholder="@Model.GetMessages.Title" asp-for="Title" />
@@ -22,7 +22,7 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         <div class="form-group">
-                            <p>Tilføj en description på din ToDo: </p>
+                            <p>Insert New Content: </p>
                             <div class="input-group">
                                 <input type="text" class="form-control"
                                        placeholder="@Model.GetMessages.Content" asp-for="Content" />
@@ -33,18 +33,16 @@
                 <div class="col-lg-6">
                     <div class="form-group">
                         <div class="form-group">
-                            <p>Færdig gjørt din ToDo?: </p>
-                            <p>if checked = done: </p>
+                            <p>Insert Category Name: </p>
                             <div class="input-group">
-                                <input type="text" class="form-control"
-                                       placeholder="@Model" asp-for="Category" />
+                                <label>@Model.GetCategory.CategoryName</label>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-12">
                     <div>
-                        <button type="submit" class="btn btn-info">Save ToDo</button>
+                        <button type="submit" class="btn btn-info">Save Message</button>
                         <br />
                     </div>
                 </div>
@@ -52,6 +50,6 @@
         </form>
 
         <br />
-        <a asp-page="./Index" class="btn btn-danger"><i class="btn text-white">Back To Ho</i></a>
+        <a asp-page="../Index" class="btn btn-primary"><i class="btn text-white">Back To Home</i></a>
     </div>
 </div>

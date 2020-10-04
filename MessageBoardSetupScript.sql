@@ -77,7 +77,7 @@ From Category
 GO
 
 --GetoneCategory
-Create Procedure ReadCategorys
+Create Procedure ReadOneCategory
 @CategoryId int
 As
 Select *
@@ -121,6 +121,25 @@ Create Procedure ReadUsers
 As
 Select UserId, Username
 From Users
+GO
+
+--ReadOneUser
+Create Procedure ReadOneUser
+@UserId int
+As
+Select *
+From Users
+Where UserId = @UserId
+GO
+
+--ReadOneUserWithPassword
+Create Procedure ReadOneUser
+@UserId int,
+@Password VarChar(60)
+As
+Select *
+From Users
+Where UserId = @UserId And Password = @Password
 GO
 
 --Update
@@ -170,10 +189,11 @@ GO
 Create Procedure UpdateMessage
 @Title VarChar(30),
 @Content VarChar(500),
-@MessageId Int
+@MessageId Int,
+@CategoryId int
 As
 UPDATE [Messages] 
-SET Title = @Title, Content = @Content
+SET Title = @Title, Content = @Content, CategoryId = @CategoryId
 WHERE MessageId = @MessageId
 GO
 
