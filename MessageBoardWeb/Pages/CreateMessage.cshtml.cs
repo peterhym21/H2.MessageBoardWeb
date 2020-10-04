@@ -48,7 +48,7 @@ namespace MessageBoardWeb.Pages
             else
                 messageId = _messagesRepository.CreateMessages(Title, Content, CategoryId, UserId);
 
-            return RedirectToPage("ShowCreatedOrUpdateMessages", new { id = messageId });
+            return RedirectToPage("Details/DetaileMessages", new { id = messageId });
 
         }
     }

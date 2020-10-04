@@ -14,7 +14,7 @@ namespace MessageBoardRepository.Interfaces
         List<Messages> ReadMessagesByCategory(int categoryId);
         Messages GetMessage(int messageId);
         int CreateMessages(string title, string content, int categoryId, int userId);
-        int UpdateMessage();
-        int DeleteMessage();
+        int UpdateMessage(int messageId, string title, string content, int categoryId);
+        void DeleteMessage(int messageId);
     }
 }
