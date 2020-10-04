@@ -48,7 +48,7 @@ GO
 Insert Into [Messages](Title, Content, UserId, CategoryId)
 Values('meh', 'meh', 2, 1),
 ('Hacking', 'Ha Yeah like im gonna show you!', 2, 2),
-('Toxisety', 'Fuck off you little Stupide N*****', 4, 1),
+('Toxisety', 'F*ck off you little St*p*de ******', 4, 1),
 ('Yeet', 'yeet', 1, 2);
 GO
 
