@@ -20,14 +20,14 @@ ___
 
 - [x] Database setup Script
 - [x] Stored Procedures
-- [ ] Conection string
-- [ ] Repository
-- [ ] Interfaces
-- [ ] Entities
-- [ ] WebSite
-- [ ] Delete
-- [ ] Detail
-- [ ] Edit / update
+- [x] Conection string
+- [x] Repository
+- [x] Interfaces
+- [x] Entities
+- [x] WebSite
+- [x] Delete
+- [x] Detail
+- [x] Edit / update
 
 <br>
 
